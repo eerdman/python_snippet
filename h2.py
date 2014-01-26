@@ -2,13 +2,13 @@
 
 #Emily Erdman
 #H2: MongoDB Queries
-#6:00
+
 
 
 import pymongo,csv
 
 #opens a connection to the mongoDB server running on tempest
-connection = pymongo.Connection('tempest', 27017)
+connection = pymongo.Connection('x', 0000)
 db=connection.db_username
 db.authenticate('username','password')
 #makes a pointer to the database to be edited
@@ -37,7 +37,7 @@ def contributorStates():
     and prints the results of the searches to a text file.
     """
     
-    f = open('/students/eerdman/qtw/h2/data/contributorStates.txt','w')
+    f = open('/path/contributorStates.txt','w')
     #finds all of the contributions from TX in 1992 without any indices
     tx = sencont.find({'contributor_state':'TX','cycle':1992}).explain()
     #writes the results from the find() in a txt file
@@ -58,7 +58,7 @@ def makeOutofState():
     #creates an index on the names of the candidates
     sencont.ensure_index([('recipient_name',pymongo.ASCENDING),
                           ('cycle',pymongo.ASCENDING)])
-    f = csv.writer(open('/students/eerdman/qtw/h2/data/invsout.csv','w'), delimiter = ',')
+    f = csv.writer(open('/path/invsout.csv','w'), delimiter = ',')
     #creates the first line of the csv file
     f.writerow(['CandidateName','CandidateState','Party','IsIncumbent','Cycle','Won',
                 'NumInstateContributions','SunInstateContribution','NumOutofStateContributions',
